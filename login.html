@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function showForm(form) {
+            console.log("Form requested:", form);
+            document.getElementById("welcome").style.display = 'none';
+            /*document.getElementById("login").style.display = (form == 'login') ? 'block' : 'none';
+            document.getElementById("register").style.display = (form == 'register') ? 'block' : 'none';*/
+            if (form == 'login') {
+                console.log("Showing login form");
+        document.getElementById("login").classList.add("active");
+        document.getElementById("register").classList.remove("active");
+    } else if (form == 'register') {
+        document.getElementById("register").classList.add("active");
+        document.getElementById("login").classList.remove("active");
+    }
+        }
+    </script>
+</head>
+<body>
+    <div id="login-container">
+        <div id="welcome">
+            <h2>Welcome to AI Legal Assistant</h2>
+            <button onclick="showForm('login')">Login</button>
+            <button onclick="showForm('register')">Register</button>
+        </div>
+
+        <div id="login" class="tab-content">
+            <h2>Login</h2>
+            <form action="auth.php" method="GET">
+                <input type="hidden" name="action" value="login">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <div id="register" class="tab-content">
+            <h2>Register</h2>
+            <form action="auth.php" method="GET">
+                <input type="hidden" name="action" value="register">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
